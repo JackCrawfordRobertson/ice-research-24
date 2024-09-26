@@ -1,0 +1,42 @@
+/* styles/q1.css */
+
+/* Full-screen carousel container */
+.carousel-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Styling each slide */
+  .slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    text-align: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Navigation links */
+  .nav-links {
+    margin-top: 20px;
+  }
+  
+  .nav-links a {
+    padding: 10px 20px;
+    background-color: #0070f3;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .nav-links a:hover {
+    background-color: #005bb5;
+  }
