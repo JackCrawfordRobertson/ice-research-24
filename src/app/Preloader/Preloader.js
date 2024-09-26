@@ -35,10 +35,10 @@ export default function Preloader() {
             transition={{ duration: .5, ease: "easeInOut" }} // Smooth animation over 2 seconds
           >
             <Image
-              src="/images/Stars.svg"  // Path to your logo
+              src="/images/Landscape.svg"  // Path to your logo
               alt="ICE 2024 Research Logo"
-              width={200}  // Adjust logo size as needed
-              height={200}
+              width={500}  // Adjust logo size as needed
+              height={500}
               priority
             />
           </motion.div>

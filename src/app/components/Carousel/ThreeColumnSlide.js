@@ -12,16 +12,29 @@ export default function ThreeColumnSlide({ column2Title, column2Text, column3Tit
     >
       {/* Column 1 */}
       <div className={styles.column1}>
-        <div className={styles.logoContainer}>
-          <Image 
-            src="/images/ICE-Logo.svg" 
-            alt="ICE Research Logo" 
-            width={100} 
-            height={250} 
-            className={styles.logo} 
-          />
-        </div>
-      </div>
+  {/* ICE Research Logo */}
+  <div className={styles.logoContainer}>
+    <Image 
+      src="/images/Portrate.svg" 
+      alt="ICE Research Logo" 
+      width={100} 
+      height={300} 
+      className={styles.logo} 
+    />
+  </div>
+
+  {/* Sponsor Section */}
+  <div className={styles.sponsorSection}>
+    <p className={styles.sponsorText}>Sponsored by</p>
+    <Image 
+      src="/images/Cvent Logo.png" 
+      alt="Sponsor Logo" 
+      width={150} 
+      height={50} 
+      className={styles.bottomLogo} 
+    />
+  </div>
+</div>
 
       {/* Column 2 */}
       <div className={styles.column2}>
@@ -32,7 +45,7 @@ export default function ThreeColumnSlide({ column2Title, column2Text, column3Tit
       {/* Column 3 */}
       <div className={styles.column3}>
         <h1>{column3Title}</h1>
-        <h5>Hover over the chart to inteact with it </h5>
+        <h5>Hover over the chart to interact with it</h5>
         {/* Render the passed component or content */}
         <div>{column3Content}</div>
       </div>
