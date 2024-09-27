@@ -5,12 +5,7 @@
   flex-direction: column;
   align-items: start;
   box-sizing: border-box;
-}
 
-.footer {
-  grid-column: 1 / span 3; /* Make the footer span all columns */
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  padding: 20px 0;
+  align-items: stretch; /* Stretch columns to be equal height */
+  margin: 0;
 }

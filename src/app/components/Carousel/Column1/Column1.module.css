@@ -1,0 +1,25 @@
+/* Column1.module.css */
+.columnSub {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 84%; /* Ensure column takes full height */
+    padding: 0;
+}
+
+.contentBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically within the box */
+    align-items: center; /* Center horizontally within the box */
+    text-align: center; /* Ensure text inside contentBox is centered */
+   
+}
+
+.bottomLogo{
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add drop shadow */
+    border-radius: 30px;
+
+
+    
+}

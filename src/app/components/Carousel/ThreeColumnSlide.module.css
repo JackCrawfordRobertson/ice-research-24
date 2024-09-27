@@ -11,54 +11,14 @@
 
 /* Column 1 - Logo positioning */
 .column1 {
-  display: flex;
-  flex-direction: column; /* Stack logos vertically */
-  align-items: flex-start;
-  justify-content: space-between; /* Space the logos */
-  padding: 20px;
-  height: 70vh; /* Ensure it takes up the full height */
-  max-width: 100px;
-}
-
-/* Main logo container in column 1 */
-.logoContainer {
-  width: auto;
-  height: auto;
-  overflow: visible;
-}
-
-/* Sponsor section */
-.sponsorSection {
-  display: flex;
-  flex-direction: row; /* Render text and logo in a row */
-  align-items: center; /* Vertically align items */
-  justify-content: center; /* Center the text and logo horizontally */
   background-color: white;
-  padding: 10px;
-  border-radius: 40px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
-
-  /* Adjust width and height after rotation */
-  width: 250px;
-  height: auto;
-
-  /* Rotation */
-  transform: rotate(-90deg); /* Rotate the sponsor section 90 degrees */
-  transform-origin: bottom; /* Ensure it rotates from the bottom */
-}
-
-/* "Sponsored by" text */
-.sponsorText {
-  font-size: 1rem;
-  margin-right: 10px; /* Add space between the text and the logo */
-  font-weight: bold;
-  color: #333;
-}
-
-/* Bottom logo styling */
-.bottomLogo {
-  width: 100px;
-  height: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Content will flow naturally from the top */
 }
 
 /* Column 2 styling */
@@ -73,9 +33,21 @@
   justify-content: flex-start; /* Content will flow naturally from the top */
 }
 
-.column2 h1 {
-  font-size: 18px;
-  color: black;
+
+
+.Title {
+  font-size: 1.8rem;
+  margin: 0;
+  margin-bottom: .5em;
+  text-transform: uppercase;  /* Make text all caps */
+}
+
+.column3Title {
+  font-size: 1.8rem;
+  color: #7f8c8d;
+  margin: 0;
+  margin-bottom: .5em;
+  text-transform: uppercase;  /* Make text all caps */
 }
 
 /* Column 3 styling */
@@ -88,4 +60,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Content will flow naturally from the top */
+}
+
+.Body {
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
