@@ -9,9 +9,19 @@ const Navbar = ({setCurrentSlide}) => {
     const buttonRefs = useRef([]);
     const [highlightProps, setHighlightProps] = useState({width: 0, left: 0});
     const [isMenuOpen, setIsMenuOpen] = useState(false); // Burger menu state
-    const buttons = ["Welcome", "Summery", "Strategist or Deliver", "Team Size", "Salary Importance", "Question 5"].map(
-        (button) => button.toUpperCase()
-    );
+    const buttons = [
+        "Welcome",
+        "Summery",
+        "Strategist or Deliver",
+        "Team Size",
+        "Salary",
+        "Budgeting",
+        "Skills",
+        "Challenges",
+        "Technology",
+        "ROI",
+        "Metrics",
+    ].map((button) => button.toUpperCase());
     // Initialize highlight position on page load
     useLayoutEffect(() => {
         if (buttonRefs.current[currentButtonIndex]) {

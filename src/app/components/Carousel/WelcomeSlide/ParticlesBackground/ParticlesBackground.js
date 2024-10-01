@@ -1,141 +1,85 @@
-// ParticlesBackground.js
 'use client';
 
 import React, { useEffect, useMemo, useState, useRef } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim'; // Import loadSlim
+import { loadSlim } from '@tsparticles/slim'; // Slim version for performance
 
 const ParticlesBackground = () => {
-  const [isInView, setIsInView] = useState(false);
-  const [init, setInit] = useState(false);
+  const [isActive, setIsActive] = useState(false);
   const particleRef = useRef(null);
 
-  // Initialize the particles engine once when in view
+  // Initialize particles when in view
   useEffect(() => {
-    if (!isInView || init) return; // Initialize only once when in view
+    if (!isActive) return;
 
     initParticlesEngine(async (engine) => {
-      await loadSlim(engine); // Loads slim version of tsparticles
-    }).then(() => {
-      setInit(true);
+      await loadSlim(engine); // Load slim version for better performance
     });
-  }, [isInView, init]);
+  }, [isActive]);
 
-  // Intersection Observer to check if ParticlesBackground is in the viewport
-  useEffect(() => {
-    const observer = new IntersectionObserver(
+  // Memoized observer callback
+  const handleIntersection = useMemo(
+    () =>
       (entries) => {
         entries.forEach((entry) => {
-          setIsInView(entry.isIntersecting); // Update isInView based on visibility
+          setIsActive(entry.isIntersecting);
         });
       },
-      { threshold: 0.1 } // Trigger when 10% of the element is visible
-    );
+    []
+  );
 
-    if (particleRef.current) {
-      observer.observe(particleRef.current);
-    }
+  // Setup intersection observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleIntersection, { threshold: 0.1 });
+
+    if (particleRef.current) observer.observe(particleRef.current);
 
     return () => {
-      if (particleRef.current) {
-        observer.unobserve(particleRef.current);
-      }
+      if (particleRef.current) observer.unobserve(particleRef.current);
     };
-  }, []);
-
-  const particlesLoaded = (container) => {
-    console.log('Particles Loaded:', container);
-  };
+  }, [handleIntersection]);
 
   const options = useMemo(
     () => ({
-      background: {
-        color: {
-          value: '#3da9de', // Change this to match your background
-        },
-      },
-      fpsLimit: 60,
+      background: { color: { value: '#3da9de' } },
+      fpsLimit: 40, // Lower FPS for smoother performance
       interactivity: {
-        events: {
-          onClick: {
-            enable: false,
-            mode: 'push',
-          },
-          onHover: {
-            enable: true,
-            mode: 'repulse',
-          },
-          resize: true,
-        },
-        modes: {
-          push: {
-            quantity: 4,
-          },
-          repulse: {
-            distance: 200,
-            duration: 0.4,
-          },
-        },
+        events: { onClick: false, onHover: false, resize: true },
       },
       particles: {
-        color: {
-          value: '#ffffff',
-        },
+        color: { value: '#ffffff' },
         links: {
           color: '#ffffff',
-          distance: 150,
+          distance: 100,
           enable: true,
           opacity: 0.5,
-          width: 2,
+          width: 1,
         },
         move: {
-          direction: 'none',
           enable: true,
-          outModes: {
-            default: 'bounce',
-          },
-          random: false,
-          speed: 3,
-          straight: false,
+          outModes: { default: 'bounce' },
+          speed: 1,
         },
         number: {
-          density: {
-            enable: true,
-            area: 800, // Increased area for better distribution
-          },
-          value: 40, // Reduced particle count for smoother performance
+          density: { enable: true, area: 300 },
+          value: 70,
         },
-        opacity: {
-          value: 0.5,
-        },
-        shape: {
-          type: 'circle',
-        },
-        size: {
-          value: { min: 3, max: 7 },
-        },
+        opacity: { value: 0.8 },
+        shape: { type: 'circle' },
+        size: { value: { min: 1, max: 5 } },
       },
-      detectRetina: true,
+      detectRetina: false,
     }),
     []
   );
 
   return (
     <div ref={particleRef} style={{ position: 'relative', height: '100%', width: '100%' }}>
-      {/* Render particles only when in the viewport */}
-      {isInView && init && (
+      {isActive && (
         <Particles
           id="tsparticles"
-          particlesLoaded={particlesLoaded}
           options={options}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: -1, // Ensure it's behind other content
-          }}
+          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}
         />
       )}
     </div>

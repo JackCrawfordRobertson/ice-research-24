@@ -7,32 +7,31 @@ const StackedBarChart = () => {
   // Updated data with team sizes and counts for 2023 and 2024
   const rawData = [
     {
-      category: '1-5',
-      '2023': 20,
-      '2024': 25
+        category: '1-5',
+        '2023': 2,  // Scaled down from 20
+        '2024': 2.5  // Scaled down from 25
     },
     {
-      category: '6-10',
-      '2023': 7,
-      '2024': 11
+        category: '6-10',
+        '2023': 0.7,  // Scaled down from 7
+        '2024': 1.1   // Scaled down from 11
     },
     {
-      category: '11-20',
-      '2023': 6,
-      '2024': 13
+        category: '11-20',
+        '2023': 0.6,  // Scaled down from 6
+        '2024': 1.3   // Scaled down from 13
     },
     {
-      category: '21-50',
-      '2023': 4,
-      '2024': 6
+        category: '21-50',
+        '2023': 0.4,  // Scaled down from 4
+        '2024': 0.6   // Scaled down from 6
     },
     {
-      category: '50-100',
-      '2023': 1,
-      '2024': 3
+        category: '50-100',
+        '2023': 0.1,  // Scaled down from 1
+        '2024': 0.3   // Scaled down from 3
     },
-    
-  ];
+];
 
   // Define hex colors for each year
   const yearColors = {
@@ -46,10 +45,8 @@ const StackedBarChart = () => {
   // Handle toggling the visibility of each year's data, ensuring at least one year is always visible
   const handleFilter = (year) => {
     if (visibleKeys.includes(year) && visibleKeys.length > 1) {
-      // If year is visible and there's more than one visible year, remove it
       setVisibleKeys(visibleKeys.filter(key => key !== year));
     } else if (!visibleKeys.includes(year)) {
-      // If year is not visible, add it
       setVisibleKeys([...visibleKeys, year]);
     }
   };
@@ -60,7 +57,7 @@ const StackedBarChart = () => {
         data={rawData}
         keys={visibleKeys}  // Show only the selected years
         indexBy="category"  // Categories are displayed on the x-axis
-        margin={{ top: 50, right: 130, bottom: 80, left: 60 }}  // Increase bottom margin for bigger title
+        margin={{ top: 50, right: 130, bottom: 80, left: 100 }}  // Increase bottom and left margins for title padding
         padding={0.3}
         valueScale={{ type: 'linear' }}
         indexScale={{ type: 'band', round: true }}
@@ -74,10 +71,8 @@ const StackedBarChart = () => {
           tickRotation: 0,
           legend: 'Team Size',
           legendPosition: 'middle',
-          legendOffset: 50,  // Bigger font size for the x-axis title
-          legendTextColor: "#333",
-          fontSize: 20,  // Increase x-axis title font size
-          fontWeight: 'bold'  // Make x-axis title bold
+          legendOffset: 50,  // More padding for the x-axis title
+          fontSize: 20,  // Larger font size for the x-axis title
         }}
         axisLeft={{
           tickSize: 5,
@@ -85,10 +80,8 @@ const StackedBarChart = () => {
           tickRotation: 0,
           legend: 'Count',
           legendPosition: 'middle',
-          legendOffset: -50,  // Adjust position for larger text
-          legendTextColor: "#333",
-          fontSize: 20,  // Increase y-axis title font size
-          fontWeight: 'bold'  // Make y-axis title bold
+          legendOffset: -70,  // More padding for the y-axis title
+          fontSize: 20,  // Larger font size for the y-axis title
         }}
         enableGridX={false}  // Disable background chart lines (grid)
         enableGridY={false}  // Disable vertical grid lines

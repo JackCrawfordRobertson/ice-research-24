@@ -398,6 +398,32 @@
     d3-shape "^3.2.0"
     lodash "^4.17.21"
 
+"@nivo/bullet@^0.87.0":
+  version "0.87.0"
+  resolved "https://registry.yarnpkg.com/@nivo/bullet/-/bullet-0.87.0.tgz#6080ccd8e696c55b366759d93c4775d612adce20"
+  integrity sha512-GJuTPVFQgy7y+5SLeFODPIf1Yw2GXSdSom0q+kS36pbexghARuFrJ5bGvBsYpO8UZtpMyFER/xrmVEbP1ohTgQ==
+  dependencies:
+    "@nivo/axes" "0.87.0"
+    "@nivo/colors" "0.87.0"
+    "@nivo/core" "0.87.0"
+    "@nivo/legends" "0.87.0"
+    "@nivo/scales" "0.87.0"
+    "@nivo/tooltip" "0.87.0"
+    "@react-spring/web" "9.4.5 || ^9.7.2"
+
+"@nivo/circle-packing@^0.87.0":
+  version "0.87.0"
+  resolved "https://registry.yarnpkg.com/@nivo/circle-packing/-/circle-packing-0.87.0.tgz#f2092f1c2674c70af60bf9b820a1458b9586971d"
+  integrity sha512-OcX63frrOqJztyUf/XmfqbjPr9guDp8p56Ow7ItgiSkkdueInkyfhYQSK2QJDkCEpiGj+o6OjC6DX3uV6eU/tQ==
+  dependencies:
+    "@nivo/colors" "0.87.0"
+    "@nivo/core" "0.87.0"
+    "@nivo/tooltip" "0.87.0"
+    "@react-spring/web" "9.4.5 || ^9.7.2"
+    "@types/d3-hierarchy" "^1.1.8"
+    d3-hierarchy "^1.1.8"
+    lodash "^4.17.21"
+
 "@nivo/colors@0.87.0":
   version "0.87.0"
   resolved "https://registry.yarnpkg.com/@nivo/colors/-/colors-0.87.0.tgz#a9e64ea0fac86b168f091b82d8375ff379a4100b"
@@ -432,7 +458,7 @@
     lodash "^4.17.21"
     prop-types "^15.7.2"
 
-"@nivo/legends@0.87.0":
+"@nivo/legends@0.87.0", "@nivo/legends@^0.87.0":
   version "0.87.0"
   resolved "https://registry.yarnpkg.com/@nivo/legends/-/legends-0.87.0.tgz#3a45c5203f987b9ba3710133c431f4809432b955"
   integrity sha512-bVJCeqEmK4qHrxNaPU/+hXUd/yaKlcQ0yrsR18ewoknVX+pgvbe/+tRKJ+835JXlvRijYIuqwK1sUJQIxyB7oA==

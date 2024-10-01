@@ -9,15 +9,14 @@ const colorScale = scaleSequential()
 
 // Original data
 const originalData = [
-  { factor: 'Salary/Compensation', value: 2.35 },
-  { factor: 'Company Culture', value: 2.82 },
-  { factor: 'Work Life Balance', value: 3.23 },
-  { factor: 'Working from Home', value: 3.61 },
-  { factor: 'Career Growth/Compensation', value: 4.18 },
-  { factor: 'Holiday Allowance', value: 4.81 },
+  { factor: 'Attendee Experience', value: 1.86 },
+  { factor: 'Cost Management', value: 2.5 },
+  { factor: 'Stakeholder Satisfaction', value: 2.61 },
+  { factor: 'Diversity and Inclusion', value: 3.88 },
+  { factor: 'Sustainability', value: 4.16 },
 ];
 
-const RadarChart = () => (
+const Q6RadarChart = () => (
   <div style={{ height: '650px', width: '100%', paddingTop: '20px' }}>
     {/* Key scale with numerical values */}
     <div style={{ textAlign: 'center', marginBottom: '20px' }}>
@@ -59,4 +58,4 @@ const RadarChart = () => (
   </div>
 );
 
-export default RadarChart;
+export default Q6RadarChart;

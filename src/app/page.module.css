@@ -3,7 +3,7 @@
   background-color: var(--background-color); /* Light grey background */
   display: flex; /* Flexbox to ensure it can stretch to fill the height */
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start; /* Fix */
   box-sizing: border-box;
 
   align-items: stretch; /* Stretch columns to be equal height */

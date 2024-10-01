@@ -38,7 +38,7 @@
 .Title {
   font-size: 1.8rem;
   margin: 0;
-  margin-bottom: .5em;
+  margin-bottom: .0em;
   text-transform: uppercase;  /* Make text all caps */
 }
 
@@ -46,7 +46,7 @@
   font-size: 1.8rem;
   color: #7f8c8d;
   margin: 0;
-  margin-bottom: .5em;
+  margin-bottom: .0em;
   text-transform: uppercase;  /* Make text all caps */
 }
 
