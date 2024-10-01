@@ -10,3 +10,15 @@
   background-color: #f6f6f6; /* Light background color */
   z-index: 9999; /* Ensure it's on top of everything else */
 }
+
+@media (max-width: 768px) {
+  .preloader {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .preloader img {
+    width: 80vw; /* Make the image responsive on mobile */
+    height: auto; /* Maintain aspect ratio */
+  }
+}

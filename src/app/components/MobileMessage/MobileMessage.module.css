@@ -1,0 +1,26 @@
+.mobileMessageContainer {
+    position: relative;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column; /* Set flexbox to column to stack content vertically */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start; /* Align content to the left */
+    padding: 20px; /* Padding around the container */
+    z-index: 10000; /* Ensure it's above the particle background */
+  }
+  
+  .message {
+    z-index: 20000; /* Ensure it's above the particle background */
+    color: white;
+    font-size: 3rem; /* Large text size */
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    line-height: .9;
+  }
+  
+  .linkedInButton {
+    z-index: 20000;
+    margin-top: 20px;
+  }
