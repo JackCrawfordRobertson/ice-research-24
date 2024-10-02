@@ -35,8 +35,12 @@ const data = originalData.map(d => {
 });
 
 const RadarChart = () => (
-  <div style={{ height: '650px', width: '100%', paddingTop: '20px' }}>
-    {/* Key scale with numerical values */}
+  <div style={{
+    height: "65vh",  // Use a responsive height relative to viewport
+    maxHeight: '700px', // Set a max height to avoid overflow on larger screens
+    width: '100%', 
+    paddingTop: '.5em',
+  }}>    {/* Key scale with numerical values */}
     <div style={{ textAlign: 'center', marginBottom: '20px' }}>
       <strong>Least Important to Most Important</strong>
       <div

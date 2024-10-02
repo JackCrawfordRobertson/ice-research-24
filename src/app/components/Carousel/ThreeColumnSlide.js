@@ -13,7 +13,7 @@ export default function ThreeColumnSlide({
     column3SubHead,
 }) {
     return (
-        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}} className={styles.page}>
+        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{duration: 1}} className={styles.mainPage}>
             {/* Column 1 */}
             <Column1 /> {/* Reuse the Column1 component */}
             {/* Column 2 */}

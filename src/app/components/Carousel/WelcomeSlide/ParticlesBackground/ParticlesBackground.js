@@ -1,23 +1,18 @@
-'use client';
-
 import React, { useEffect, useMemo, useState, useRef } from 'react';
 import Particles, { initParticlesEngine } from '@tsparticles/react';
-import { loadSlim } from '@tsparticles/slim'; // Slim version for performance
+import { loadSlim } from '@tsparticles/slim';
 
 const ParticlesBackground = () => {
   const [isActive, setIsActive] = useState(false);
   const particleRef = useRef(null);
 
-  // Initialize particles when in view
   useEffect(() => {
     if (!isActive) return;
-
     initParticlesEngine(async (engine) => {
-      await loadSlim(engine); // Load slim version for better performance
+      await loadSlim(engine);
     });
   }, [isActive]);
 
-  // Memoized observer callback
   const handleIntersection = useMemo(
     () =>
       (entries) => {
@@ -28,7 +23,6 @@ const ParticlesBackground = () => {
     []
   );
 
-  // Setup intersection observer
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersection, { threshold: 0.1 });
 
@@ -42,7 +36,7 @@ const ParticlesBackground = () => {
   const options = useMemo(
     () => ({
       background: { color: { value: '#3da9de' } },
-      fpsLimit: 40, // Lower FPS for smoother performance
+      fpsLimit: 40,
       interactivity: {
         events: { onClick: false, onHover: false, resize: true },
       },
@@ -74,12 +68,33 @@ const ParticlesBackground = () => {
   );
 
   return (
-    <div ref={particleRef} style={{ position: 'relative', height: '100%', width: '100%' }}>
+    <div
+      ref={particleRef}
+      style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        height: '100%',
+        width: '100%',
+        maxWidth: '1200px', // Set max-width for screen size
+        margin: '0 auto',
+        zIndex: -1,
+        overflow: 'hidden',
+      }}
+    >
       {isActive && (
         <Particles
           id="tsparticles"
           options={options}
-          style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            height: '100%',
+            width: '100%',
+            maxWidth: '1200px', // Constrain particle width
+            overflow: 'hidden',
+          }}
         />
       )}
     </div>

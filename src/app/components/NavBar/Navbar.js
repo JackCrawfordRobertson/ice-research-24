@@ -1,81 +1,84 @@
-"use client";
+import { AppBar, Toolbar, Tabs, Tab, useMediaQuery, useTheme } from '@mui/material';
+import { useState, useEffect, useRef } from 'react';
 
-import {useState, useRef, useLayoutEffect} from "react";
-import {motion} from "framer-motion";
-import styles from "./Navbar.module.css";
+const Navbar = ({ setCurrentSlide }) => {
+  const [currentTab, setCurrentTab] = useState(0);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const navbarRef = useRef(null); // Ref to capture the AppBar element
 
-const Navbar = ({setCurrentSlide}) => {
-    const [currentButtonIndex, setCurrentButtonIndex] = useState(0);
-    const buttonRefs = useRef([]);
-    const [highlightProps, setHighlightProps] = useState({width: 0, left: 0});
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // Burger menu state
-    const buttons = [
-        "Welcome",
-        "Summery",
-        "Strategist or Deliver",
-        "Team Size",
-        "Salary",
-        "Budgeting",
-        "Skills",
-        "Challenges",
-        "Technology",
-        "ROI",
-        "Metrics",
-    ].map((button) => button.toUpperCase());
-    // Initialize highlight position on page load
-    useLayoutEffect(() => {
-        if (buttonRefs.current[currentButtonIndex]) {
-            const initialWidth = buttonRefs.current[currentButtonIndex].offsetWidth;
-            const initialLeft = buttonRefs.current[currentButtonIndex].offsetLeft;
-            setHighlightProps({
-                width: initialWidth,
-                left: initialLeft,
-            });
-        }
-    }, []);
+  const tabs = [
+    "Welcome",
+    "Summary",
+    "Strategist or Deliver",
+    "Team Size",
+    "Salary",
+    "Budgeting",
+    "Skills",
+    "Challenges",
+    "Technology",
+    "ROI",
+    "Metrics",
+  ];
 
-    const handleButtonClick = (index) => {
-        setCurrentSlide(index);
-        setCurrentButtonIndex(index);
+  const handleTabChange = (event, newValue) => {
+    setCurrentTab(newValue);
+    setCurrentSlide(newValue);
+  };
 
-        if (buttonRefs.current[index]) {
-            const newWidth = buttonRefs.current[index].offsetWidth;
-            const newLeft = buttonRefs.current[index].offsetLeft;
-            setHighlightProps({
-                width: newWidth,
-                left: newLeft,
-            });
-        }
-
-        // Close the burger menu after clicking an option on mobile
-        setIsMenuOpen(false);
+  // Recalculate the height whenever the screen is resized
+  useEffect(() => {
+    const updateNavbarHeight = () => {
+      if (navbarRef.current) {
+        const navbarHeight = navbarRef.current.offsetHeight;
+        document.documentElement.style.setProperty('--navbar-height', `${navbarHeight}px`);
+      }
     };
 
-    return (
-        <div className={styles.container}>
-            {/* Burger Menu Button for Mobile */}
-            <div className={styles.burger} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                <div className={`${styles.burgerLine} ${isMenuOpen ? styles.open : ""}`} />
-                <div className={`${styles.burgerLine} ${isMenuOpen ? styles.open : ""}`} />
-                <div className={`${styles.burgerLine} ${isMenuOpen ? styles.open : ""}`} />
-            </div>
+    // Set initial height
+    updateNavbarHeight();
 
-            {/* Menu items (visible on desktop, conditionally visible on mobile) */}
-            <div className={`${styles.buttonContainer} ${isMenuOpen ? styles.openMenu : ""}`}>
-                <motion.div className={styles.highlight} animate={highlightProps} transition={{duration: 0.3}} />
-                {buttons.map((item, index) => (
-                    <button
-                        key={index}
-                        ref={(el) => (buttonRefs.current[index] = el)}
-                        onClick={() => handleButtonClick(index)}
-                        className={`${styles.button} ${currentButtonIndex === index ? styles.active : ""}`}
-                    >
-                        {item}
-                    </button>
-                ))}
-            </div>
-        </div>
-    );
+    // Listen for resize events
+    window.addEventListener('resize', updateNavbarHeight);
+
+    // Cleanup the event listener on unmount
+    return () => {
+      window.removeEventListener('resize', updateNavbarHeight);
+    };
+  }, []);
+
+  return (
+    <AppBar
+      ref={navbarRef} // Attach the ref to the AppBar
+      position="static"
+      style={{ backgroundColor: 'rgba(155, 155, 155, 0.9)' }}
+    >
+      <Toolbar style={{ justifyContent: 'center' }}> {/* Center the tabs */}
+        {!isMobile && (
+          <Tabs
+            value={currentTab}
+            onChange={handleTabChange}
+            textColor="inherit"
+            centered // This centers the text within the Tabs component
+            TabIndicatorProps={{
+              style: {
+                backgroundColor: '#3da9de', // Set the underline colour to blue
+                height: '4px', // Increase the thickness of the underline
+              }
+            }}
+          >
+            {tabs.map((tab, index) => (
+              <Tab
+                key={index}
+                label={tab.toUpperCase()}
+                style={{ fontWeight: 'bold', fontSize: '.8rem' }} // Optional: style each tab
+              />
+            ))}
+          </Tabs>
+        )}
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default Navbar;

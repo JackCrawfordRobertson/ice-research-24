@@ -1,11 +1,18 @@
+/* Page container with flexbox to handle navbar and main content */
 .page {
-  height: calc(100vh - 66px); /* Subtract the navbar height (e.g., 66px) from the viewport height */
-  background-color: var(--background-color); /* Light grey background */
-  display: flex; /* Flexbox to ensure it can stretch to fill the height */
+  display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Fix */
+  min-height: calc(100vh - var(--navbar-height)); /* Ensure the page stretches to fill the entire viewport, adjusting for the navbar */
+  background-color: var(--background-color);
   box-sizing: border-box;
-
-  align-items: stretch; /* Stretch columns to be equal height */
   margin: 0;
+  padding: 0;
+}
+
+/* Carousel container takes up the remaining space below the navbar */
+.carouselContainer {
+  flex-grow: 1; /* This ensures the carousel container grows to fill available space */
+  display: flex;
+  width: 100%; /* Ensure the carousel takes full width */
+  height: calc(100vh - var(--navbar-height)); /* Ensure the carousel height adjusts based on the navbar */
 }

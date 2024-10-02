@@ -11,7 +11,7 @@
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.1.1",
+    "@mui/material": "^6.1.2",
     "@nivo/bar": "^0.87.0",
     "@nivo/bullet": "^0.87.0",
     "@nivo/circle-packing": "^0.87.0",

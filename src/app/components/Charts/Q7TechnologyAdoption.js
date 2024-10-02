@@ -35,8 +35,12 @@ const data4 = [
 
 // Component for rendering a vertical bar chart
 const BarChart = ({ data, title }) => (
-  <div style={{ height: '600px', width: '100%' }}>
-    {/* Styled title to match the `.Title` and `.column3Title` CSS styles */}
+  <div style={{
+    height: "50vh",  // Use a responsive height relative to viewport
+    maxHeight: '700px', // Set a max height to avoid overflow on larger screens
+    width: '100%', 
+    paddingTop: '.5em',
+  }}>    {/* Styled title to match the `.Title` and `.column3Title` CSS styles */}
     <Typography 
   variant="h6" 
   align="left" 

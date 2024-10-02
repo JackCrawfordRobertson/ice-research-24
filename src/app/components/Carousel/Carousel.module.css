@@ -1,83 +1,38 @@
-/* Carousel container */
 .carousel {
-  width: 100vw;
-  height: 92vh;
+  width: 100%;  /* Fill parent container width */
+  height: 100%; /* Fill parent container height */
   position: relative;
 }
 
 .slick-list {
-  overflow: hidden;
+  overflow: hidden; /* Prevent content from overflowing */
+  width: 100%; /* Make sure it fits within its container */
 }
 
+/* Flexbox control to ensure slides are aligned correctly */
 .slick-track {
-  display: flex;
+  display: flex; /* Ensure the slides align properly */
+  width: 100%; /* Prevent excessive width that causes overflow */
+  max-width: 100%; /* Prevent the track from becoming larger than the container */
+  transition: transform 0.3s ease-in-out; /* Optional: smooth sliding animation */
 }
 
+/* Slick slides should fit the track */
 .slick-slide {
-  width: 100vw !important;
-  height: 92vh;
+  flex: 0 0 auto; /* Keep each slide's width consistent */
+  width: 100%; /* Ensure slides take up the full width */
+  max-width: 100%; /* Prevent overflow of slides themselves */
+  box-sizing: border-box; /* Ensure padding/margin are included in width */
+}
+
+.sliderWrapper {
+  width: 100%; /* Fill parent container width */
+  height: 100%; /* Full height based on parent container */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.slide {
-  width: 100vw;
-  height: 92vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-}
 
-/* Mobile optimised styles */
-@media (max-width: 768px) {
-  /* Make sure the carousel takes up the full screen height */
-  .carousel {
-      height: 100vh;
-  }
 
-  /* Make sure the slide takes up the full screen height */
-  .slick-slide {
-      height: 100vh;
-  }
-
-  .slide {
-      height: 100vh;
-  }
-
-  .welcome {
-      padding-left: 10px;
-      padding-right: 10px;
-  }
-
-  /* Optimise the h1 font size for mobile */
-  .welcome h1 {
-      font-size: 4rem; /* Adjust the font size for smaller screens */
-      line-height: .8; /* Adjust the line height for readability */
-      margin-bottom: 10px;
-  }
-
-  /* Button styling for mobile */
-  .welcome button {
-      padding: 12px 25px; /* Adjust button padding */
-      font-size: 16px;
-      width: 80%; /* Make the button fill more of the screen */
-      align-self: center;
-  }
-
-  /* Adjust sponsored section for mobile */
-  .sponsoredSection {
-      padding: 10px;
-      max-width: 100%;
-  }
-
-  .sponsoredSection p {
-      font-size: 0.9rem;
-  }
-
-  .sponsorLogo {
-      width: 80px; /* Adjust logo size for mobile */
-  }
-}
+/* Remove mobile optimised styles since you're focusing on desktop */

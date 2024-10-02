@@ -57,29 +57,32 @@ const preloadNextSlide = (nextSlide) => {
     }
 };
 
-export default function Carousel({currentSlide, setCurrentSlide}) {
+export default function Carousel({ currentSlide, setCurrentSlide }) {
     const sliderRef = useRef(null); // Create a ref for the slider
-
+  
     const settings = {
-        dots: false,
-        infinite: false,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        beforeChange: (current, next) => {
-            setCurrentSlide(next);
-            preloadNextSlide(next); // Preload the next slide's content
-        },
+      dots: false,
+      infinite: false,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      swipe: false,
+      beforeChange: (current, next) => {
+        setCurrentSlide(next);
+        preloadNextSlide(next); // Preload the next slide's content
+      },
     };
-
+  
     // Effect to change slide when currentSlide updates
     useEffect(() => {
-        if (sliderRef.current) {
-            sliderRef.current.slickGoTo(currentSlide); // Programmatically go to the current slide
-        }
+      if (sliderRef.current) {
+        sliderRef.current.slickGoTo(currentSlide); // Programmatically go to the current slide
+      }
     }, [currentSlide]);
 
     return (
+        <div className={styles.sliderWrapper}>
         <Slider ref={sliderRef} {...settings} className={styles.carousel}>
             {/* First Slide: WelcomeSlide Component */}
             <div className={styles.slide}>
@@ -201,5 +204,6 @@ export default function Carousel({currentSlide, setCurrentSlide}) {
             </div> */}
 
         </Slider>
+        </div>
     );
 }

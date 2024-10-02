@@ -3,21 +3,26 @@
   --background-color: #f9fbfc; /* Light grey */
   --text-color: #333333; /* Dark grey */
   --font-helvetica-condensed: 'Helvetica Condensed', sans-serif;
+  --navbar-height: 60px; /* Set your navbar height here */
 }
 
-body {
-  font-family: var(--font-helvetica-condensed);
+html, body {
+  height: 100%; /* Ensure the body and html stretch to fill the viewport */
   margin: 0;
   padding: 0;
   background-color: var(--background-color);
   color: var(--text-color);
-  overflow-x: hidden; /* Disable horizontal overflow */
-  overflow-y: hidden; /* Disable vertical overflow */
+  font-family: var(--font-helvetica-condensed);
+  overflow: hidden; 
 }
 
-.full-screen {
-  height: 100vh;
+body {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  min-height: calc(100vh - var(--navbar-height)); /* Adjust the height based on the navbar */
+  overflow: hidden; /* Prevent overflow within the main content */
 }

@@ -1,26 +1,43 @@
 .mobileMessageContainer {
-    position: relative;
-    width: 100vw; /* Full viewport width */
-    height: 100vh; /* Full viewport height */
-    display: flex;
-    flex-direction: column; /* Set flexbox to column to stack content vertically */
-    justify-content: flex-start; /* Align content to the top */
-    align-items: flex-start; /* Align content to the left */
-    padding: 20px; /* Padding around the container */
-    z-index: 10000; /* Ensure it's above the particle background */
-  }
-  
+  position: relative;
+  display: grid; /* Use CSS Grid */
+  grid-template-rows: auto 1fr auto; /* Define rows: content at the top, flexible middle, and content at the bottom if needed */
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  padding: 20px; /* Padding around the container */
+  z-index: 10000; /* Ensure it's above the particle background */
+  user-select: none; /* Prevent text from being selected */
+}
+
+.message {
+  grid-row: 1; /* Ensure this stays at the top */
+  color: white;
+  font-size: 3rem; /* Large text size */
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  line-height: 1.2; /* Adjust line height for readability */
+}
+
+.linkedInButton {
+  grid-row: 2; /* Ensure this stays below the message */
+  margin-top: 20px;
+  padding: 1.5vh 4vw; /* Responsive padding for the button */
+  font-size: 1.2rem; /* Responsive font size for the button */
+  background-color: #0072b1; /* LinkedIn color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 480px) {
   .message {
-    z-index: 20000; /* Ensure it's above the particle background */
-    color: white;
-    font-size: 3rem; /* Large text size */
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    line-height: .9;
+    font-size: 2.5rem; /* Smaller font size for small screens */
   }
-  
+
   .linkedInButton {
-    z-index: 20000;
-    margin-top: 20px;
+    font-size: 1rem;
   }
+}

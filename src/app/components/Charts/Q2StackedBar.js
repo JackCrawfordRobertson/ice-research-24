@@ -1,4 +1,3 @@
-// components/StackedBarChart.js
 import React, { useState } from 'react';
 import { ResponsiveBar } from '@nivo/bar';
 import { Button, Stack } from '@mui/material';
@@ -7,42 +6,52 @@ const StackedBarChart = () => {
   // Updated data with team sizes and counts for 2023 and 2024
   const rawData = [
     {
-        category: '1-5',
-        '2023': 2,  // Scaled down from 20
-        '2024': 2.5  // Scaled down from 25
+      category: '1-5',
+      '2023': 2,  // Scaled down from 20
+      '2024': 2.5  // Scaled down from 25
     },
     {
-        category: '6-10',
-        '2023': 0.7,  // Scaled down from 7
-        '2024': 1.1   // Scaled down from 11
+      category: '6-10',
+      '2023': 0.7,  // Scaled down from 7
+      '2024': 1.1   // Scaled down from 11
     },
     {
-        category: '11-20',
-        '2023': 0.6,  // Scaled down from 6
-        '2024': 1.3   // Scaled down from 13
+      category: '11-20',
+      '2023': 0.6,  // Scaled down from 6
+      '2024': 1.3   // Scaled down from 13
     },
     {
-        category: '21-50',
-        '2023': 0.4,  // Scaled down from 4
-        '2024': 0.6   // Scaled down from 6
+      category: '21-50',
+      '2023': 0.4,  // Scaled down from 4
+      '2024': 0.6   // Scaled down from 6
     },
     {
-        category: '50-100',
-        '2023': 0.1,  // Scaled down from 1
-        '2024': 0.3   // Scaled down from 3
+      category: '50-100',
+      '2023': 0.1,  // Scaled down from 1
+      '2024': 0.3   // Scaled down from 3
     },
-];
+  ];
 
-  // Define hex colors for each year
+  // Convert raw data to percentages
+  const data = rawData.map(item => {
+    const total = item['2023'] + item['2024'];
+    return {
+      category: item.category,
+      '2023': ((item['2023'] / total) * 100).toFixed(1),  // Convert 2023 to percentage
+      '2024': ((item['2024'] / total) * 100).toFixed(1),  // Convert 2024 to percentage
+    };
+  });
+
+  // Define colors for each year
   const yearColors = {
-    '2023': 'rgba(224, 46, 46, 0.6)',  // Custom color for 2023 with opacity
-    '2024': 'rgba(67, 170, 222, 0.6)'    // Custom color for 2024 with opacity
+    '2023': 'rgba(224, 46, 46, 0.6)',  // Custom color for 2023
+    '2024': 'rgba(67, 170, 222, 0.6)'  // Custom color for 2024
   };
 
   // Define keys for the years
   const [visibleKeys, setVisibleKeys] = useState(['2023', '2024']);
 
-  // Handle toggling the visibility of each year's data, ensuring at least one year is always visible
+  // Handle toggling the visibility of each year's data
   const handleFilter = (year) => {
     if (visibleKeys.includes(year) && visibleKeys.length > 1) {
       setVisibleKeys(visibleKeys.filter(key => key !== year));
@@ -52,12 +61,17 @@ const StackedBarChart = () => {
   };
 
   return (
-    <div style={{ height: '700px' }}>
+    <div style={{
+      height: "70vh",  // Use a responsive height relative to viewport
+      maxHeight: '700px', // Set a max height to avoid overflow on larger screens
+      width: '100%', 
+      paddingTop: '.5em',
+    }}>
       <ResponsiveBar
-        data={rawData}
+        data={data}
         keys={visibleKeys}  // Show only the selected years
         indexBy="category"  // Categories are displayed on the x-axis
-        margin={{ top: 50, right: 130, bottom: 80, left: 100 }}  // Increase bottom and left margins for title padding
+        margin={{ top: 50, right: 130, bottom: 80, left: 100 }}  // Increase bottom and left margins
         padding={0.3}
         valueScale={{ type: 'linear' }}
         indexScale={{ type: 'band', round: true }}
@@ -72,16 +86,14 @@ const StackedBarChart = () => {
           legend: 'Team Size',
           legendPosition: 'middle',
           legendOffset: 50,  // More padding for the x-axis title
-          fontSize: 20,  // Larger font size for the x-axis title
         }}
         axisLeft={{
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: 'Count',
+          legend: 'Percentage',
           legendPosition: 'middle',
           legendOffset: -70,  // More padding for the y-axis title
-          fontSize: 20,  // Larger font size for the y-axis title
         }}
         enableGridX={false}  // Disable background chart lines (grid)
         enableGridY={false}  // Disable vertical grid lines
@@ -114,11 +126,11 @@ const StackedBarChart = () => {
         ]}
         role="application"
         ariaLabel="Nivo bar chart demo"
-        barAriaLabel={(e) => `${e.id}: ${e.formattedValue} in category: ${e.indexValue}`}
+        barAriaLabel={(e) => `${e.id}: ${e.formattedValue}% in category: ${e.indexValue}`}
       />
 
       {/* Toggle Buttons */}
-      <Stack direction="row" justifyContent="center" spacing={2} style={{ marginTop: '20px' }}>
+      <Stack direction="row" justifyContent="center" spacing={2} style={{ marginTop: '0px' }}>
         <Button
           variant={visibleKeys.includes('2023') ? 'contained' : 'outlined'}
           onClick={() => handleFilter('2023')}

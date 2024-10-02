@@ -17,8 +17,13 @@ const data = {
 
 // Circle Packing chart component with background color and opacity for bubbles
 const CirclePackingChart = () => (
-    <div style={{ height: '700px', width: '1000px', padding: '20px', borderRadius: '10px' }}>
-        <ResponsiveCirclePacking
+    <div style={{
+        height: "70vh",  // Use a responsive height relative to viewport
+        maxHeight: '700px', // Set a max height to avoid overflow on larger screens
+        width: '100%', 
+        paddingTop: '.5em',
+      }}>
+                <ResponsiveCirclePacking
             data={data}
             margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
             id="name"  // Category names as identity

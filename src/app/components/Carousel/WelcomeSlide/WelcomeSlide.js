@@ -1,6 +1,3 @@
-// src/components/WelcomeSlide.js
-'use client';
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '@mui/material/Button';
@@ -15,7 +12,7 @@ const WelcomeSlide = ({ setCurrentSlide }) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 1, ease: 'easeOut', delay: 3.5 }, // 5-second delay
+      transition: { duration: 1, ease: 'easeOut', delay: 3.5 },
     },
   };
 
@@ -24,7 +21,7 @@ const WelcomeSlide = ({ setCurrentSlide }) => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: { delay: 3.5, duration: 0.5, ease: 'easeOut' }, // 5.5-second delay
+      transition: { delay: 3.5, duration: 0.5, ease: 'easeOut' },
     },
   };
 
@@ -33,7 +30,7 @@ const WelcomeSlide = ({ setCurrentSlide }) => {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { delay: 3.5, duration: 0.7, ease: 'easeOut' }, // 6-second delay
+      transition: { delay: 3.5, duration: 0.7, ease: 'easeOut' },
     },
   };
 
@@ -46,23 +43,16 @@ const WelcomeSlide = ({ setCurrentSlide }) => {
       <div className={styles.backgroundGradient}></div>
 
       <div className={styles.welcome}>
-        {/* Animated Title */}
         <motion.h1 initial="hidden" animate="visible" variants={titleVariants}>
           Welcome <br /> to ICE Research
         </motion.h1>
 
-        {/* Animated Button */}
         <motion.div initial="hidden" animate="visible" variants={buttonVariants}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={() => setCurrentSlide(1)}
-          >
+          <Button variant="contained" color="primary" onClick={() => setCurrentSlide(1)}>
             Get Started
           </Button>
         </motion.div>
 
-        {/* Animated Sponsor Section */}
         <motion.div
           className={styles.sponsoredSection}
           initial="hidden"

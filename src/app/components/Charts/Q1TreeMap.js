@@ -16,7 +16,12 @@ const TreemapChart = () => {
   const totalValue = data.children.reduce((acc, cur) => acc + cur.value, 0);
 
   return (
-    <div style={{ height: "760px", width: '100%', paddingTop: '.5em' }}>
+    <div style={{
+      height: "70vh",  // Use a responsive height relative to viewport
+      maxHeight: '700px', // Set a max height to avoid overflow on larger screens
+      width: '100%', 
+      paddingTop: '.5em',
+    }}>
       <ResponsiveTreeMap
         data={data}
         identity="name"

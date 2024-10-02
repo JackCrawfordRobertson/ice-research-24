@@ -22,8 +22,12 @@ const data = [
 
 // Simple Bar chart component
 const SimpleBarChart = () => (
-    <div style={{ height: '750px', width: '100%' }}>
-        <ResponsiveBar
+    <div style={{
+        height: "70vh",  // Use a responsive height relative to viewport
+        maxHeight: '700px', // Set a max height to avoid overflow on larger screens
+        width: '100%', 
+        paddingTop: '.5em',
+      }}>        <ResponsiveBar
             data={data}
             keys={['Percentage']}
             indexBy="category"  // Show category on Y-axis

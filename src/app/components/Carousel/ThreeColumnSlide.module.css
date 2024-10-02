@@ -1,68 +1,55 @@
-.page {
-  display: grid;
-  grid-template-columns: auto 350px 1fr; /* Auto-size first column */
-  gap: 20px;
-  min-height: 100vh;
-  background-color: var(--background-color);
-  padding: 0 20px 20px 20px;
-  align-items: start;
-  margin: 0;
-}
-
-/* Column 1 - Logo positioning */
-.column1 {
-  background-color: white;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Content will flow naturally from the top */
+.mainPage {
+    display: grid;
+    grid-template-columns: auto 350px 1fr; /* Auto-size first column */
+    gap: 20px;
+    background-color: var(--background-color);
+    padding: 20px 20px 20px 20px;
+    align-items: start;
+    margin: 0;
+    background-color: white;
+    height: 90vh;
 }
 
 /* Column 2 styling */
 .column2 {
-  background-color: white;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Content will flow naturally from the top */
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Content will flow naturally from the top */
 }
 
-
-
 .Title {
-  font-size: 1.8rem;
-  margin: 0;
-  margin-bottom: .0em;
-  text-transform: uppercase;  /* Make text all caps */
+    font-size: 1.8rem;
+    margin: 0;
+    margin-bottom: 0em;
+    text-transform: uppercase; /* Make text all caps */
 }
 
 .column3Title {
-  font-size: 1.8rem;
-  color: #7f8c8d;
-  margin: 0;
-  margin-bottom: .0em;
-  text-transform: uppercase;  /* Make text all caps */
+    font-size: 1.8rem;
+    color: #7f8c8d;
+    margin: 0;
+    margin-bottom: 0em;
+    text-transform: uppercase; /* Make text all caps */
 }
 
 /* Column 3 styling */
 .column3 {
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Content will flow naturally from the top */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Content will flow naturally from the top */
 }
 
 .Body {
-  font-size: 1.1rem;
-  line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1.5;
 }
