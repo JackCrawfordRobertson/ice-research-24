@@ -3,7 +3,7 @@ import React from 'react';
 
 // Data with categories and percentages, including colors with opacity
 const data = {
-    name: "All Skills",
+    name: "",
     color: "rgba(200, 200, 200, 0.3)",  // Set background bubble to light grey
     children: [
         { name: "AI and Technology Proficiency", value: 91.1, color: 'rgba(255, 105, 97, 0.6)' },  // Red with opacity

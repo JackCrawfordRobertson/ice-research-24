@@ -37,6 +37,7 @@ const MobileMessage = () => {
       >
         Check out our LinkedIn
       </Button>
+      
     </div>
   );
 };

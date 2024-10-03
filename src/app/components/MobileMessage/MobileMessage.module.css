@@ -2,11 +2,11 @@
   position: relative;
   display: grid; /* Use CSS Grid */
   grid-template-rows: auto 1fr auto; /* Define rows: content at the top, flexible middle, and content at the bottom if needed */
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  padding: 20px; /* Padding around the container */
-  z-index: 10000; /* Ensure it's above the particle background */
+  width: auto; /* Full viewport width */
+  height: 100%; /* Full viewport height */
+  z-index: 100; /* Ensure it's above the particle background */
   user-select: none; /* Prevent text from being selected */
+  margin: 1em;
 }
 
 .message {
@@ -15,6 +15,7 @@
   font-size: 3rem; /* Large text size */
   font-weight: bold;
   margin-bottom: 20px;
+  z-index: 100; /* Ensure it's above the particle background */
   text-transform: uppercase;
   line-height: 1.2; /* Adjust line height for readability */
 }
@@ -24,9 +25,10 @@
   margin-top: 20px;
   padding: 1.5vh 4vw; /* Responsive padding for the button */
   font-size: 1.2rem; /* Responsive font size for the button */
-  background-color: #0072b1; /* LinkedIn color */
-  color: white;
+  background-color: white; /* LinkedIn color */
+  color: #3da9de;
   border: none;
+  font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
 }

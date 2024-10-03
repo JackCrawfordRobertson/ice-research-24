@@ -1,13 +1,6 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
-// Import the Inter font
-const inter = Inter({
-  subsets: ["latin"], // Use "latin" or another subset depending on your needs
-  variable: "--font-inter", // Define a CSS variable to use the font
-});
 
 export const metadata = {
   title: "ICE 2024 Research",
@@ -17,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.variable}>
+      <body className="font-helvetica-condensed">
         {/* Global Navbar */}
 
         {/* Main Content */}
