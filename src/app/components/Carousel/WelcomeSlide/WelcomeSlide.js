@@ -37,10 +37,10 @@ const WelcomeSlide = ({ setCurrentSlide }) => {
   return (
     <div className={styles.slide}>
       {/* Particles Background */}
-      <ParticlesBackground />
+   
 
       {/* Background Gradient */}
-      <div className={styles.backgroundGradient}></div>
+      <ParticlesBackground />
 
       <div className={styles.welcome}>
         <motion.h1 initial="hidden" animate="visible" variants={titleVariants}>

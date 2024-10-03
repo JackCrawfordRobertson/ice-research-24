@@ -1,10 +1,9 @@
-/* The slide wrapper */
 .slide {
   position: relative;
   width: 100%;
   height: calc(100vh - var(--navbar-height)); /* Subtract navbar height */
   display: flex;
-  justify-content: left;
+  justify-content: flex-start; /* Corrected value */
   align-items: center;
   overflow: hidden;
 }
@@ -33,6 +32,7 @@
   margin-bottom: 20px;
   width: 50%;
   text-transform: uppercase;
+  margin-top: .3em;
 }
 
 /* Welcome button styling */

@@ -175,7 +175,7 @@ export default function Carousel({ currentSlide, setCurrentSlide }) {
             </div>
 
             {/* Sixth Slide: Financial Management */}
-            <div className={styles.slide}>
+            {/* <div className={styles.slide}>
                 <ThreeColumnSlide
                     column2Title="Technology Adoption"
                     column2Text="The research highlights two dominant trends shaping the future of corporate event planning: the increased use of AI and technology (50.9%) and a greater focus on sustainability (36.4%). Many event planners already utilise AI to enhance various aspects of event management, with 41.4% of respondents reporting the use of AI in content generation, logistics, and data analysis. The rise of hybrid event formats was also noted, with 56.4% seeing it as an enduring format for the industry. As organisations become more conscious of their environmental impact, sustainability emerged as a priority, with 42.9% of respondents factoring it into their planning processes."
@@ -191,7 +191,7 @@ export default function Carousel({ currentSlide, setCurrentSlide }) {
                     column3SubHead="Hover over and click on the chart to interact with the data."
                     interactiveChart={<Q8ROI />} // Lazily loaded BarChart
                 />
-            </div>
+            </div> */}
 
             {/* <div className={styles.slide}>
                 <ThreeColumnSlide
