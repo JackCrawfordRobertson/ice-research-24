@@ -1,38 +1,19 @@
-.carousel {
-  width: 100%;  /* Fill parent container width */
-  height: 100%; /* Fill parent container height */
-  position: relative;
-}
-
-.slick-list {
-  overflow: hidden; /* Prevent content from overflowing */
-  width: 100%; /* Make sure it fits within its container */
-}
-
-/* Flexbox control to ensure slides are aligned correctly */
-.slick-track {
-  display: flex; /* Ensure the slides align properly */
-  width: 100%; /* Prevent excessive width that causes overflow */
-  max-width: 100%; /* Prevent the track from becoming larger than the container */
-  transition: transform 0.3s ease-in-out; /* Optional: smooth sliding animation */
-}
-
-/* Slick slides should fit the track */
-.slick-slide {
-  flex: 0 0 auto; /* Keep each slide's width consistent */
-  width: 100%; /* Ensure slides take up the full width */
-  max-width: 100%; /* Prevent overflow of slides themselves */
-  box-sizing: border-box; /* Ensure padding/margin are included in width */
-}
-
 .sliderWrapper {
-  width: 100%; /* Fill parent container width */
-  height: 100%; /* Full height based on parent container */
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.swiper {
+  width: 100%;
+  height: 100%;
+}
 
-
-/* Remove mobile optimised styles since you're focusing on desktop */
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
