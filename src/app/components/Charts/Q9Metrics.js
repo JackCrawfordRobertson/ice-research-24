@@ -15,6 +15,9 @@ const data = [
   { factor: 'Other', percentage: 19.6 },
 ];
 
+const reversedData = [...data].reverse();
+
+
 // Simple Bar chart component
 const SimpleBarChart = () => (
   <div style={{
@@ -25,10 +28,10 @@ const SimpleBarChart = () => (
     paddingTop: '.5em',
   }}>
     <ResponsiveBar
-      data={data}
+      data={reversedData}
       keys={['percentage']}
       indexBy="factor"
-      margin={{ top: 20, right: 20, bottom: 50, left: 150 }}  // Adjust left margin for long names
+      margin={{ top: 20, right: 20, bottom: 50, left: 180 }}  // Adjust left margin for long names
       padding={0.3}
       layout="horizontal"  // Set layout to horizontal
       colors="rgba(82, 179, 232, 0.8)"  // Set all bars to the same blue color
@@ -42,8 +45,8 @@ const SimpleBarChart = () => (
       enableGridY={false}  // Remove horizontal grid lines
       theme={{
         axis: {
-          ticks: { text: { fontSize: 12 } },
-          legend: { text: { fontSize: 12 } },
+          ticks: { text: { fontSize: ".9em" } },
+          legend: { text: { fontSize: ".9em" } },
         },
       }}
       role="application"

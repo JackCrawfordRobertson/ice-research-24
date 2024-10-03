@@ -47,12 +47,21 @@ const ParticlesBackground = () => {
                     value: "#3da9de", // Adjust the background color as needed
                 },
             },
-            fpsLimit: 30, // Lower the FPS limit to 30
+            fpsLimit: 60, // Increase the FPS limit to 60 for smoother animation
             interactivity: {
                 events: {
-                    onClick: false,
-                    onHover: false,
+                    onClick: false, // Disable click events
+                    onHover: {
+                        enable: true, // Enable hover interaction
+                        mode: "repulse", // Use repulse mode for hover effect
+                    },
                     resize: true,
+                },
+                modes: {
+                    repulse: {
+                        distance: 200, // Reduce the distance for repulsion to make it smoother
+                        duration: 1, // Shorten the duration for a quicker response
+                    },
                 },
             },
             particles: {
@@ -61,9 +70,9 @@ const ParticlesBackground = () => {
                 },
                 links: {
                     color: "#ffffff",
-                    distance: 100,
+                    distance: 200, // Increase link distance slightly for better visuals
                     enable: true,
-                    opacity: 0.5,
+                    opacity: 0.3, // Make the links more subtle
                     width: 1,
                 },
                 move: {
@@ -71,29 +80,29 @@ const ParticlesBackground = () => {
                     outModes: {
                         default: "bounce",
                     },
-                    speed: 1,
+                    speed: 1, // Lower the speed for a smoother particle movement
                 },
                 number: {
                     density: {
                         enable: true,
-                        area: 300,
+                        area: 50, // Increase area slightly to reduce the number of overlapping particles
                     },
-                    value: 40, // Reduce from 70 to 40
+                    value: 200, // Keep the number of particles moderate for performance
                 },
                 opacity: {
-                    value: 0.8,
+                    value: 0.8, // Lower opacity for a softer appearance
                 },
                 shape: {
                     type: "circle",
                 },
                 size: {
                     value: {
-                        min: 1,
-                        max: 5,
+                        min: 2,
+                        max: 4, // Adjust the size to keep it subtle
                     },
                 },
             },
-            detectRetina: false,
+            detectRetina: true, // Enable retina detection for better quality on high-resolution displays
         }),
         []
     );

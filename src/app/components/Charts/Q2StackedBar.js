@@ -127,6 +127,12 @@ const StackedBarChart = () => {
         role="application"
         ariaLabel="Nivo bar chart demo"
         barAriaLabel={(e) => `${e.id}: ${e.formattedValue}% in category: ${e.indexValue}`}
+        theme={{
+          axis: {
+            ticks: { text: { fontSize: ".9em" } },
+            legend: { text: { fontSize: ".9em" } },
+          },
+        }}
       />
 
       {/* Toggle Buttons */}

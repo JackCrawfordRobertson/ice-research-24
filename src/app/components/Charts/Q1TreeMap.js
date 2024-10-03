@@ -27,7 +27,7 @@ const TreemapChart = () => {
         identity="name"
         value="value"
         label={(node) => (
-          <tspan style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
+          <tspan style={{ fontSize: ".8rem", fontWeight: "bold" }}>
             {`${node.id}: ${(node.value / totalValue * 100).toFixed(1)}%`}
           </tspan>
         )}

@@ -23,7 +23,7 @@ const CirclePackingChart = () => (
         width: '100%', 
         paddingTop: '.5em',
       }}>
-                <ResponsiveCirclePacking
+        <ResponsiveCirclePacking
             data={data}
             margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
             id="name"  // Category names as identity
@@ -44,6 +44,14 @@ const CirclePackingChart = () => (
             animate={true}
             motionStiffness={90}
             motionDamping={12}
+            theme={{
+                labels: {
+                    text: {
+                        fontSize: ".9em",  // Increase the font size for labels
+                        fontWeight: 'bold', // Optionally make the text bold
+                    },
+                },
+            }}
         />
     </div>
 );

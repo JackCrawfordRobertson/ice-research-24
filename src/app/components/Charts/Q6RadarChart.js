@@ -58,6 +58,12 @@ const Q6RadarChart = () => (
       animate={true}
       motionStiffness={90}
       motionDamping={15}
+      theme={{
+        axis: {
+          ticks: { text: { fontSize: ".9em" } },
+          legend: { text: { fontSize: ".9em" } },
+        },
+      }}
     />
   </div>
 );

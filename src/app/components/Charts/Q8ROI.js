@@ -15,7 +15,7 @@ const originalData = [
   { factor: 'Venue Selection', value: 3.77 },
   { factor: 'Marketing and Promotion', value: 5 },
   { factor: 'Diversity, Equity & Inclusion', value: 5.17 },
-  { factor: 'Technology Integration', value: 6.05 },
+  { factor: 'Technology', value: 6.05 },
   { factor: 'Sustainability', value: 6.58 },
 ];
 
@@ -85,6 +85,12 @@ const RadarChart = () => (
       dotBorderColor={{ from: 'color' }}
       animate={true}
       motionConfig="wobbly"
+      theme={{
+        axis: {
+          ticks: { text: { fontSize: ".9em" } },
+          legend: { text: { fontSize: ".9em" } },
+        },
+      }}
     />
   </div>
 );

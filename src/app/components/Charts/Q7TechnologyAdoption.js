@@ -87,6 +87,12 @@ const BarChart = ({ data, title }) => (
       labelSkipHeight={12}
       labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
       enableLabel={false}
+      theme={{
+        axis: {
+          ticks: { text: { fontSize: ".9em" } },
+          legend: { text: { fontSize: ".9em" } },
+        },
+      }}
     />
   </div>
 );
