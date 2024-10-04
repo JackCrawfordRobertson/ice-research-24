@@ -1,12 +1,11 @@
 import { AppBar, Toolbar, Tabs, Tab, useMediaQuery, useTheme } from '@mui/material';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-const Navbar = ({ setCurrentSlide }) => {
+const Navbar = ({ setCurrentSlide, currentSlide }) => {
   const [currentTab, setCurrentTab] = useState(0);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const navbarRef = useRef(null); // Ref to capture the AppBar element
-
+  
   const tabs = [
     "Welcome",
     "Summary",
@@ -23,55 +22,53 @@ const Navbar = ({ setCurrentSlide }) => {
 
   const handleTabChange = (event, newValue) => {
     setCurrentTab(newValue);
-    setCurrentSlide(newValue);
+    setCurrentSlide(newValue); // Update current slide on tab click
   };
 
-  // Recalculate the height whenever the screen is resized
   useEffect(() => {
-    const updateNavbarHeight = () => {
-      if (navbarRef.current) {
-        const navbarHeight = navbarRef.current.offsetHeight;
-        document.documentElement.style.setProperty('--navbar-height', `${navbarHeight}px`);
-      }
-    };
-
-    // Set initial height
-    updateNavbarHeight();
-
-    // Listen for resize events
-    window.addEventListener('resize', updateNavbarHeight);
-
-    // Cleanup the event listener on unmount
-    return () => {
-      window.removeEventListener('resize', updateNavbarHeight);
-    };
-  }, []);
+    setCurrentTab(currentSlide);
+  }, [currentSlide]);
 
   return (
     <AppBar
-      ref={navbarRef} // Attach the ref to the AppBar
-      position="static"
-      style={{ backgroundColor: 'rgba(155, 155, 155, 0.9)' }}
+      position="sticky"  // Sticky navbar that doesn't push content
+      sx={{
+        backgroundColor: '#9b9b9b',  // Solid grey background
+        height: '64px',  // Fixed height
+        boxSizing: 'border-box',  // Ensure padding doesn't affect height
+        boxShadow: 'none',  // Remove the default drop shadow
+      }}
     >
-      <Toolbar style={{ justifyContent: 'center' }}> {/* Center the tabs */}
+      <Toolbar style={{ justifyContent: 'center' }}>
         {!isMobile && (
           <Tabs
             value={currentTab}
             onChange={handleTabChange}
-            textColor="inherit"
-            centered // This centers the text within the Tabs component
+            centered
             TabIndicatorProps={{
-              style: {
-                backgroundColor: '#3da9de', // Set the underline colour to blue
-                height: '4px', // Increase the thickness of the underline
-              }
+              style: { display: 'none' }, // Hide the default underline indicator
             }}
           >
             {tabs.map((tab, index) => (
               <Tab
                 key={index}
                 label={tab.toUpperCase()}
-                style={{ fontWeight: 'bold', fontSize: '.8rem' }} // Optional: style each tab
+                sx={{
+                  fontWeight: 'bold',
+                  fontSize: '.8rem',
+                  padding: '12px 12px',
+                  borderRadius: '8px',
+                  transition: 'all 0.3s ease',  // Smooth transition for background and text color
+                  color: currentTab === index ? 'white' : 'white',  // White text for selected tab, black for unselected
+                  backgroundColor: currentTab === index ? '#3da9de' : 'transparent',  // Blue background when selected
+                  '&:hover': {
+                    backgroundColor: currentTab === index ? '#3da9de' : 'rgba(0, 0, 0, 0.08)',
+                    color: 'white', // Keep text white on hover when selected
+                  },
+                  '&.Mui-selected': {
+                    color: 'white !important',  // Force white text on selected tab
+                  },
+                }}
               />
             ))}
           </Tabs>

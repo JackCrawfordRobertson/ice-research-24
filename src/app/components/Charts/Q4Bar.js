@@ -1,84 +1,76 @@
-import { ResponsiveBar } from '@nivo/bar';
 import React from 'react';
+import { ResponsiveTreeMap } from '@nivo/treemap';
 
-// Data with percentages for each category
-const data = [
-    {
-        category: 'Stakeholder',
+const TreemapChart = () => {
+  // Correct hierarchical data structure for Nivo Treemap
+  const data = {
+    name: 'root',  // Root node is required
+    children: [
+      {
+        category: 'STAKEHOLDER',
         Percentage: 48.9,
         color: 'rgba(57, 168, 63, 0.6)',  // Green for "BOTH"
-    },
-    {
-        category: 'Event Team',
+      },
+      {
+        category: 'EVENT TEAM',
         Percentage: 46.7,
         color: 'rgba(224, 46, 46, 0.6)',  // Red for "AN EVENT STRATEGIST"
-    },
-    {
-        category: 'Other',
+      },
+      {
+        category: 'OTHER',
         Percentage: 4.4,
         color: 'rgba(67, 170, 222, 0.6)',  // Blue for "AN EVENT DELIVERER"
-    },
-];
+      },
+    ],
+  };
 
-// Simple Bar chart component
-const SimpleBarChart = () => (
+  // Calculate the total value of all the categories
+  const totalValue = data.children.reduce((acc, cur) => acc + cur.Percentage, 0);
+
+  return (
     <div style={{
-        height: "70vh",  // Use a responsive height relative to viewport
-        maxHeight: '700px', // Set a max height to avoid overflow on larger screens
-        width: '100%', 
-        paddingTop: '.5em',
-      }}>        <ResponsiveBar
-            data={data}
-            keys={['Percentage']}
-            indexBy="category"  // Show category on Y-axis
-            margin={{ top: 20, right: 50, bottom: 60, left: 100 }}  // Adjust left and bottom margins for extra padding
-            padding={0.3}
-            layout="vertical"  // Standard vertical layout
-            valueScale={{ type: 'linear' }}
-            indexScale={{ type: 'band', round: true }}
-            colors={({ data }) => data.color}  // Use color from the data
-            axisTop={null}
-            axisRight={null}  // Remove axis on the right side
-            axisBottom={{
-                legend: 'Percentage',
-                legendPosition: 'middle',
-                legendOffset: 50,  // Add more space between X-axis and title
+      height: "70vh",  // Use a responsive height relative to viewport
+      maxHeight: '700px', // Set a max height to avoid overflow on larger screens
+      width: '100%',
+      paddingTop: '.5em',
+    }}>
+      <ResponsiveTreeMap
+        data={data}
+        identity="category"  // Identity is now based on the "category" key in data
+        value="Percentage"    // Use "Percentage" as the value key
+        label={(node) => (
+          <tspan style={{ fontSize: ".8rem", fontWeight: "bold" }}>
+            {`${node.id}: ${(node.value / totalValue * 100).toFixed(1)}%`}
+          </tspan>
+        )}
+        labelSkipSize={0}  // Ensure labels aren't skipped due to size
+        labelTextColor="#000"  // Set label text color to gray
+        colors={(node) => node.data.color}  // Set personalized colors
+        borderWidth={0}  // Remove the border/keyline
+        tile="squarify"  // Use a better tile strategy to fill space
+        leavesOnly={true}  // Only show the leaves of the treemap
+        innerPadding={10}  // Add padding between boxes
+        outerPadding={0}  // Add padding around the outer edges
+        animate={true}
+        motionStiffness={90}
+        motionDamping={15}
+        tooltip={({ node }) => (
+          <div
+            style={{
+              padding: '5px 10px',
+              background: node.data.color,
+              color: 'white',
+              borderRadius: '4px',
             }}
-            axisLeft={{
-                tickPadding: 5,  // Add some padding between ticks and labels
-                legend: 'Category',
-                legendPosition: 'middle',
-                legendOffset: -70,  // Add more space between Y-axis and title
-            }}
-            enableGridX={false}  // Disable vertical grid lines
-            enableGridY={false}  // Disable horizontal grid lines
-            labelSkipWidth={12}
-            labelSkipHeight={12}
-            labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-            enableLabel={false}  // No labels inside the bars
-            theme={{
-                axis: {
-                    ticks: {
-                        text: {
-                            fontSize: 15,  // Set font size for axis ticks
-                        },
-                    },
-                    legend: {
-                        text: {
-                            fontSize: 15,  // Set font size for legends
-                        },
-                    },
-                },
-                legends: {
-                    text: {
-                        fontSize: 15,  // Set font size for any additional legends
-                    },
-                },
-            }}
-            role="application"
-            ariaLabel="Stacked bar chart showing percentage of responses for categories Stakeholder, Event Team, and Other"
-        />
+          >
+            <strong>{node.id}: {(node.value / totalValue * 100).toFixed(1)}%</strong>
+          </div>
+        )}
+        labelOrientation="horizontal"  // Keep the text horizontal and easy to read
+        isInteractive={true}  // Ensure the chart remains interactive
+      />
     </div>
-);
+  );
+};
 
-export default SimpleBarChart;
+export default TreemapChart;

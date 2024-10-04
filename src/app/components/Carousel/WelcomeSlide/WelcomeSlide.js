@@ -6,7 +6,6 @@ import styles from './WelcomeSlide.module.css';
 import ParticlesBackground from './ParticlesBackground/ParticlesBackground';
 
 const WelcomeSlide = ({ setCurrentSlide }) => {
-  // Animation variants for Framer Motion
   const titleVariants = {
     hidden: { opacity: 0, y: -50 },
     visible: {
@@ -36,10 +35,6 @@ const WelcomeSlide = ({ setCurrentSlide }) => {
 
   return (
     <div className={styles.slide}>
-      {/* Particles Background */}
-   
-
-      {/* Background Gradient */}
       <ParticlesBackground />
 
       <div className={styles.welcome}>
@@ -48,7 +43,11 @@ const WelcomeSlide = ({ setCurrentSlide }) => {
         </motion.h1>
 
         <motion.div initial="hidden" animate="visible" variants={buttonVariants}>
-          <Button variant="contained" color="primary" onClick={() => setCurrentSlide(1)}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setCurrentSlide(1)} // Update to the desired slide
+          >
             Get Started
           </Button>
         </motion.div>

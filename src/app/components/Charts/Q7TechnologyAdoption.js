@@ -46,7 +46,7 @@ const BarChart = ({ data, title }) => (
   align="left" 
   gutterBottom 
   style={{ 
-    fontSize: '1.8rem', 
+    fontSize: '1.5rem', 
     fontWeight: 'bold', 
     margin: '0 0 0.5em 0', 
     textTransform: 'uppercase', 
@@ -89,8 +89,8 @@ const BarChart = ({ data, title }) => (
       enableLabel={false}
       theme={{
         axis: {
-          ticks: { text: { fontSize: ".9em" } },
-          legend: { text: { fontSize: ".9em" } },
+          ticks: { text: { fontSize: ".7em" } },
+          legend: { text: { fontSize: ".7em" } },
         },
       }}
     />
