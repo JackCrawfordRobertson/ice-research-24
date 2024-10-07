@@ -1,14 +1,31 @@
-// components/TreemapChart.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ResponsiveTreeMap } from '@nivo/treemap';
 
 const TreemapChart = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Function to check screen size and update isMobile state
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Define mobile as <= 768px
+    };
+
+    // Run on initial render
+    handleResize();
+
+    // Add event listener for resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup event listener on unmount
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const data = {
     name: "Event Roles",
     children: [
-      { name: "BOTH", value: 27, color: "#39a83f" },        // Personalized color for "Both"
-      { name: "AN EVENT STRATEGIST", value: 23, color: "#e02e2e" },  // Custom color (Tomato Red)
-      { name: "AN EVENT DELIVERER", value: 8, color: "#43aade" },    // Personalized color for "An Event Deliverer"
+      { name: "BOTH", value: 27, color: "#39a83f" },
+      { name: "AN EVENT STRATEGIST", value: 23, color: "#e02e2e" },
+      { name: "AN EVENT DELIVERER", value: 8, color: "#43aade" },
     ]
   };
 
@@ -17,8 +34,8 @@ const TreemapChart = () => {
 
   return (
     <div style={{
-      height: "70vh",  // Use a responsive height relative to viewport
-      maxHeight: '700px', // Set a max height to avoid overflow on larger screens
+      height: isMobile ? "45vh" : "70vh",  // Mobile height: 50vh, Desktop height: 70vh
+      maxHeight: isMobile ? '400px' : '700px',  // Mobile max height: 400px, Desktop max height: 700px
       width: '100%', 
       paddingTop: '.5em',
     }}>
@@ -32,13 +49,13 @@ const TreemapChart = () => {
           </tspan>
         )}
         labelSkipSize={0}  // Ensure labels aren't skipped due to size
-        labelTextColor="#000"  // Set label text color to gray
-        colors={(node) => node.data.color}  // Set personalized colors
-        borderWidth={0}  // Remove the border/keyline
-        tile="squarify"  // Use a better tile strategy to fill space
-        leavesOnly={true}  // Only show the leaves of the treemap
-        innerPadding={10}  // Add padding between boxes
-        outerPadding={0}  // Add padding around the outer edges
+        labelTextColor="#000"
+        colors={(node) => node.data.color}
+        borderWidth={0}
+        tile="squarify"
+        leavesOnly={true}
+        innerPadding={10}
+        outerPadding={0}
         animate={true}
         motionStiffness={90}
         motionDamping={15}
@@ -54,8 +71,8 @@ const TreemapChart = () => {
             <strong>{node.id}: {(node.value / totalValue * 100).toFixed(1)}%</strong>
           </div>
         )}
-        labelOrientation="horizontal"  // Keep the text horizontal and easy to read
-        isInteractive={true}  // Ensure the chart remains interactive
+        labelOrientation="horizontal"
+        isInteractive={true}
       />
     </div>
   );

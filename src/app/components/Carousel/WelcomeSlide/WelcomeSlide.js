@@ -60,7 +60,7 @@ const WelcomeSlide = ({ setCurrentSlide }) => {
         >
           <p>SPONSORED BY</p>
           <Image
-            src="/images/Cvent Logo.png"
+            src="/images/Cvent_Logo.png"
             alt="Sponsor Logo"
             width={150}
             height={50}

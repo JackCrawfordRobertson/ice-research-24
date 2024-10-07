@@ -1,0 +1,25 @@
+.ctaContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    padding: 20px;
+    text-align: left;
+  }
+  
+  .bigText {
+    font-size: 7rem;
+    font-weight: bold;
+    color: #333; /* Dark grey */
+    margin-bottom: 1rem;
+    margin-top: 0;
+    line-height: 90px;
+    max-width: 80%;
+  }
+  
+  .copyText {
+    font-size: 1.2rem;
+    color: #555; /* Medium grey */
+    max-width: 80%;
+    line-height: 1.6;
+  }
