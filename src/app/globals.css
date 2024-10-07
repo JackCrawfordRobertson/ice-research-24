@@ -3,9 +3,9 @@
   --background-color: #f9fbfc; /* Light grey */
   --text-color: #333333; /* Dark grey */
   --font-helvetica-condensed: 'Helvetica Condensed', sans-serif;
-  --navbar-height: 60px; /* Set your navbar height here */
 }
 
+/* Global styles */
 html, body {
   height: 100%; /* Ensure the body and html stretch to fill the viewport */
   margin: 0;
@@ -13,7 +13,7 @@ html, body {
   background-color: var(--background-color);
   color: var(--text-color);
   font-family: var(--font-helvetica-condensed);
-  overflow: hidden; 
+  overflow-y: hidden;
 }
 
 body {
@@ -23,6 +23,39 @@ body {
 
 main {
   flex-grow: 1;
-  min-height: calc(100vh - var(--navbar-height)); /* Adjust the height based on the navbar */
-  /* overflow: hidden; Prevent overflow within the main content */
+}
+
+/* Desktop: apply --navbar-height */
+@media (min-width: 769px) {
+  :root {
+    --navbar-height: 60px; /* Define navbar height for desktop */
+  }
+
+  .navbar {
+    height: var(--navbar-height);
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  main {
+    min-height: calc(100vh - var(--navbar-height)); /* Adjust the height based on the navbar */
+  }
+}
+
+/* Mobile: no navbar, so no navbar height */
+@media (max-width: 768px) {
+  :root {
+    --navbar-height: 0; /* Set navbar height to 0 for mobile */
+  }
+
+  .navbar {
+    display: none; /* Hide the navbar on mobile */
+  }
+
+  main {
+    min-height: 100vh; /* No navbar, so fill the full height */
+  }
 }

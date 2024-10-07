@@ -29,6 +29,7 @@
     "next": "14.2.13",
     "particles-bg": "^2.5.5",
     "react": "^18",
+    "react-device-detect": "^2.2.3",
     "react-dom": "^18",
     "react-intersection-observer": "^9.13.1",
     "react-slick": "^0.30.2",

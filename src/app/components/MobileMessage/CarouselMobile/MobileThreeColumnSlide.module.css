@@ -1,0 +1,59 @@
+.mainPage {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 20px; /* Space between the stacked elements */
+    background-color: var(--background-color);
+    padding: 20px;
+    align-items: flex-start;
+    margin: 0;
+    background-color: white;
+    height: auto; /* Allow height to grow as needed */
+  }
+  
+  /* Column 2 styling */
+  .column2 {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .Title {
+    font-size: 1.5rem;
+    margin: 0;
+    margin-bottom: .5em;
+    text-transform: uppercase; /* Make text all caps */
+  }
+  
+  .column3Title {
+    font-size: 1.5rem;
+    color: #7f8c8d;
+    margin: 0;
+    margin-bottom: .5em;
+    text-transform: uppercase; /* Make text all caps */
+  }
+  
+  /* Column 3 styling */
+  .column3 {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .Body {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .sponsoredBy {
+    display: flex;
+    align-items: flex-start; /* Replace with flex-start */
+    justify-content: flex-start; /* Replace with flex-start */
+  }
