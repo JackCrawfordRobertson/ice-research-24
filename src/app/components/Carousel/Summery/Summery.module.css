@@ -24,7 +24,7 @@
 }
 
 .grid-item p {
-  font-size: 1rem;
+  font-size: 1.6rem;
   line-height: 1.6;
   flex-grow: 1; /* The text will fill available space */
   margin-bottom: 1.5em;

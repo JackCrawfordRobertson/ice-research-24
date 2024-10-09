@@ -90,14 +90,35 @@ const StackedBarChart = () => {
         enableGridY={false}
         labelSkipWidth={12}
         labelSkipHeight={12}
-        labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
         role="application"
         ariaLabel="Nivo bar chart demo"
-        barAriaLabel={(e) => `${e.id}: ${e.formattedValue}% in category: ${e.indexValue}`}
+        // Add percentage to tooltip
+        tooltip={({ id, value, indexValue, color }) => (
+          <div
+            style={{
+              padding: '5px 10px',
+              color: 'white',
+              background: color,
+              borderRadius: '5px',
+            }}
+          >
+            <strong>{id}:</strong> {value}% in category {indexValue}
+          </div>
+        )}
+        // Add larger, bold numbers behind the bars
+        label={({ value }) => `${value}%`}
+        labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
+        labelFormat={value => `${value}%`}
         theme={{
           axis: {
             ticks: { text: { fontSize: ".9em" } },
             legend: { text: { fontSize: ".9em" } },
+          },
+          labels: {
+            text: {
+              fontSize: '.9em', // Make numbers bigger
+              fontWeight: 'bold', // Make numbers bold
+            },
           },
         }}
       />

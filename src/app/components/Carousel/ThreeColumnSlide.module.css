@@ -1,6 +1,6 @@
 .mainPage {
     display: grid;
-    grid-template-columns: auto 350px 1fr; /* Auto-size first column */
+    grid-template-columns: auto 14em 1fr; /* Auto-size first column */
     gap: 20px;
     background-color: var(--background-color);
     padding: 20px 20px 20px 20px;
@@ -12,25 +12,23 @@
 
 /* Column 2 styling */
 .column2 {
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start; /* Content will flow naturally from the top */
+    hyphens: none; /* Prevent hyphenation */
 }
 
 .Title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     margin: 0;
-    margin-bottom: 0em;
+    margin-bottom: .3em;
     text-transform: uppercase; /* Make text all caps */
 }
 
 .column3Title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: #7f8c8d;
     margin: 0;
     margin-bottom: 0em;
@@ -50,6 +48,6 @@
 }
 
 .Body {
-    font-size: 1.1rem;
+    font-size: 1rem;
     line-height: 1.5;
 }

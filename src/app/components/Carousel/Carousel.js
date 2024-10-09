@@ -9,12 +9,12 @@ import styles from "./Carousel.module.css";
 
 // Dynamically import the slides
 const WelcomeSlide = dynamic(() => import("./WelcomeSlide/WelcomeSlide"), { ssr: false });
-const ThreeColumnGrid = dynamic(() => import("../Carousel/Summery/ThreeColumnGrid"), { ssr: false });
+const Summery = dynamic(() => import("./Summery/Summery"), { ssr: false });
 const ThreeColumnSlide = dynamic(() => import("./ThreeColumnSlide"), { ssr: false });
 const TreemapChart = dynamic(() => import("../Charts/Q1TreeMap"), { ssr: false });
 const Q2StackedBar = dynamic(() => import("../Charts/Q2StackedBar"), { ssr: false });
 const Q3RadarChart = dynamic(() => import("../Charts/Q3RadarChart"), { ssr: false });
-const Q4Bar = dynamic(() => import("../Charts/Q4Bar"), { ssr: false });
+const Q4TreeMap = dynamic(() => import("../Charts/Q4TreeMap"), { ssr: false });
 const Q5Bubble = dynamic(() => import("../Charts/Q5Bubble"), { ssr: false });
 const Q6RadarChart = dynamic(() => import("../Charts/Q6RadarChart"), { ssr: false });
 const Q7TechnologyAdoption = dynamic(() => import("../Charts/Q7TechnologyAdoption"), { ssr: false });
@@ -57,8 +57,8 @@ export default function Carousel({ currentSlide, setCurrentSlide }) {
           <InViewSlide>
           <ThreeColumnSlide
               column2Title="Comprehensive Analysis and Key Insights"
-              column2Text="In our 2024 ICE research, we took a deep dive into the events industry's ever-changing landscape. While sustainability is still a top priority for our team at ICE-HUB, we uncovered other fascinating insights, too."
-              interactiveChart={<ThreeColumnGrid />} // Pass your interactive chart component here
+              column2Text="In our 2024 ICE research, we took a deep dive into the events industry's everchanging landscape. While sustainability is still a top priority for our team at ICE-HUB, we uncovered other fascinating insights, too."
+              interactiveChart={<Summery />} // Pass your interactive chart component here
             />
           </InViewSlide>
         </SwiperSlide>
@@ -108,7 +108,7 @@ export default function Carousel({ currentSlide, setCurrentSlide }) {
                     column2Text="Budget management remains a core part of the responsibilities for corporate event planners. Nearly half of the respondents (48.9%) stated that stakeholders were responsible for setting the event budget, while 46.7% indicated that the event team itself took on this responsibility."
                     column3Title="Financial Management."
                     column3SubHead="Hover over the chart to interact with the data."
-                    interactiveChart={<Q4Bar />} // Lazily loaded BarChart
+                    interactiveChart={<Q4TreeMap />} // Lazily loaded BarChart
                 />
           </InViewSlide>
         </SwiperSlide>
@@ -127,7 +127,7 @@ export default function Carousel({ currentSlide, setCurrentSlide }) {
           <InViewSlide>
           <ThreeColumnSlide
                     column2Title="Challenges Faced by Corporate Event Planners"
-                    column2Text="Budget constraints were reported as the most significant challenge for corporate event planners, with 47.7% of respondents ranking it as their top concern for the coming 12 months. Stakeholder management (22.7%) and technology integration (27.3%) were also highlighted as major hurdles. Additionally, 50% of planners expect their team sizes to remain the same over the next year, despite the increasing complexity of events. This highlights the pressure on event planners to deliver high-quality, innovative experiences with limited resources. Sustainability practices also presented a challenge, with 70.2% of respondents citing cost as the biggest barrier to incorporating sustainable initiatives into their events."
+                    column2Text="Stakeholder management (22.7%) and technology integration (27.3%) were identified as significant hurdles for event planners. Moreover, half of the planners (50%) expect their team sizes to stay the same over the next year, despite the increasing complexity of events. This underscores the pressure on planners to deliver high-quality, innovative experiences with limited resources. Sustainability also remains a challenge, with 70.2% of respondents citing cost as the biggest barrier to adopting sustainable practices in their events."
                     column3Title="Challenges Faced by Event Planners"
                     column3SubHead="Hover over the chart to interact with the data."
                     interactiveChart={<Q6RadarChart />} // Lazily loaded BarChart
@@ -149,7 +149,7 @@ export default function Carousel({ currentSlide, setCurrentSlide }) {
                     column2Title="ROI and Success Metrics"
                     column2Text="The data suggests that event planners prioritise elements that directly impact the attendee experience, such as content creation, engagement, and budget management. While important, factors like technology integration and sustainability are considered less critical, indicating that planners might still view them as supporting, rather than central, components in delivering successful events. This highlights a potential opportunity for greater emphasis on sustainable practices and technological advancements in future event strategies."
                     column3Title="Priorities when organising an event"
-                    column3SubHead="HHover over the chart to interact with the data."
+                    column3SubHead="Hover over the chart to interact with the data."
                     interactiveChart={<Q8ROI />} // Lazily loaded BarChart
                 />
           </InViewSlide>

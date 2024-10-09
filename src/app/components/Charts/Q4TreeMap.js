@@ -39,7 +39,7 @@ const TreemapChart = () => {
         identity="category"  // Identity is now based on the "category" key in data
         value="Percentage"    // Use "Percentage" as the value key
         label={(node) => (
-          <tspan style={{ fontSize: ".8rem", fontWeight: "bold" }}>
+          <tspan style={{ fontSize: ".9rem", fontWeight: "bold" }}>
             {`${node.id}: ${(node.value / totalValue * 100).toFixed(1)}%`}
           </tspan>
         )}

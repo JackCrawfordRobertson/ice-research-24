@@ -11,11 +11,11 @@ const colorScale = scaleSequential()
 const originalData = [
   { factor: 'Content Creation', value: 2.47 },
   { factor: 'Attendee Engagement', value: 3.33 },
-  { factor: 'Budget', value: 3.51 },
+  { factor: 'Budget Management', value: 3.51 },
   { factor: 'Venue Selection', value: 3.77 },
   { factor: 'Marketing and Promotion', value: 5 },
   { factor: 'Diversity, Equity & Inclusion', value: 5.17 },
-  { factor: 'Technology', value: 6.05 },
+  { factor: 'Technology Integration', value: 6.05 },
   { factor: 'Sustainability', value: 6.58 },
 ];
 

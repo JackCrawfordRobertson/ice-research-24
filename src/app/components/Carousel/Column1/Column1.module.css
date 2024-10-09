@@ -5,6 +5,7 @@
     justify-content: space-between;
     height: 95%; /* Ensure column takes full height */
     padding: 0;
+    width: 100px; /* Adjust the width as needed */
 }
 
 .contentBox {
@@ -13,13 +14,9 @@
     justify-content: center; /* Center vertically within the box */
     align-items: center; /* Center horizontally within the box */
     text-align: center; /* Ensure text inside contentBox is centered */
-   
 }
 
-.bottomLogo{
+.bottomLogo {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add drop shadow */
     border-radius: 30px;
-
-
-    
 }

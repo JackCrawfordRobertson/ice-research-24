@@ -70,14 +70,14 @@
 }
 
 .sponsoredSection p {
-  font-size: 1rem;
+  font-size: .8rem;
   margin-right: 10px;
   font-weight: bold;
   padding-left: 20px;
 }
 
 .sponsorLogo {
-  width: 100px;
+  width: 70px;
   height: auto;
   margin-left: 0px;
   padding-right: 20px;

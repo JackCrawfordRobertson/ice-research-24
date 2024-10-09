@@ -47,11 +47,23 @@ const CirclePackingChart = () => (
             theme={{
                 labels: {
                     text: {
-                        fontSize: ".9em",  // Increase the font size for labels
+                        fontSize: ".8em",  // Increase the font size for labels
                         fontWeight: 'bold', // Optionally make the text bold
                     },
                 },
             }}
+            tooltip={({ id, value, color }) => (
+                <div
+                    style={{
+                        padding: '5px 10px',
+                        color: 'white',
+                        background: 'rgba(82, 179, 232, 0.8)',  // Blue background
+                        borderRadius: '5px',
+                    }}
+                >
+                    <strong>{value}%</strong> in {id}
+                </div>
+            )}
         />
     </div>
 );

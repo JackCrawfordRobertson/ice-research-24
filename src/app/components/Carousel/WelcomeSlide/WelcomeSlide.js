@@ -62,8 +62,8 @@ const WelcomeSlide = ({ setCurrentSlide }) => {
           <Image
             src="/images/Cvent_Logo.png"
             alt="Sponsor Logo"
-            width={150}
-            height={50}
+            width={100}
+            height={25}
             className={styles.sponsorLogo}
           />
         </motion.div>

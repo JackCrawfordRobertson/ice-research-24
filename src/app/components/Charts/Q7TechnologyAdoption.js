@@ -4,12 +4,12 @@ import { Typography, Slider, Box } from '@mui/material';
 
 // Pseudo data for four different charts
 const data1 = [
-  { category: 'Event Registration', percentage: 90.9 },
+  { category: 'Registration', percentage: 90.9 },
   { category: 'Hybrid Events', percentage: 74.5 },
   { category: 'Web-streaming', percentage: 72.7 },
   { category: 'Chat GPT', percentage: 43.6 },
   { category: 'B2B Matchmaking', percentage: 18.2 },
-  { category: 'Augmented Reality', percentage: 16.4 }
+  { category: 'AR', percentage: 16.4 }
 ];
 
 const data2 = [
@@ -22,15 +22,15 @@ const data3 = [
   { category: 'Content Generation', percentage: 83.8 },
   { category: 'Logistics & Planning', percentage: 32.4 },
   { category: 'Data Analysis', percentage: 29.7 },
-  { category: 'Personalising Attendee Experience', percentage: 21.6 }
+  { category: 'Personalising Experiences', percentage: 21.6 }
 ];
 
 const data4 = [
-  { category: 'Somewhat Comfortable', percentage: 45 },
+  { category: 'Slightly Comf', percentage: 45 },
   { category: 'Neutral', percentage: 27.5 },
-  { category: 'Somewhat Uncomfortable', percentage: 15 },
-  { category: 'Very Comfortable', percentage: 7.5 },
-  { category: 'Very Uncomfortable', percentage: 5 }
+  { category: 'Slightly Uncomf', percentage: 15 },
+  { category: 'Very Comf', percentage: 7.5 },
+  { category: 'Very Uncomf', percentage: 5 }
 ];
 
 // Component for rendering a vertical bar chart
@@ -40,28 +40,28 @@ const BarChart = ({ data, title }) => (
     maxHeight: '700px', // Set a max height to avoid overflow on larger screens
     width: '100%', 
     paddingTop: '.5em',
-  }}>    {/* Styled title to match the `.Title` and `.column3Title` CSS styles */}
+  }}>    
     <Typography 
-  variant="h6" 
-  align="left" 
-  gutterBottom 
-  style={{ 
-    fontSize: '1.5rem', 
-    fontWeight: 'bold', 
-    margin: '0 0 0.5em 0', 
-    textTransform: 'uppercase', 
-    color: '#7f8c8d',  // Matching color for `.column3Title`
-    lineHeight: '1'    // Adjust line height, '1' means no extra spacing
-  }}  
->
-  {title}
-</Typography>
+      variant="h6" 
+      align="left" 
+      gutterBottom 
+      style={{ 
+        fontSize: '1.5rem', 
+        fontWeight: 'bold', 
+        margin: '0 0 0.5em 0', 
+        textTransform: 'uppercase', 
+        color: '#7f8c8d',  // Matching color for `.column3Title`
+        lineHeight: '1'    // Adjust line height, '1' means no extra spacing
+      }}  
+    >
+      {title}
+    </Typography>
 
     <ResponsiveBar
       data={data}
       keys={['percentage']}
       indexBy="category"
-      margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
+      margin={{ top: 10, right: 50, bottom: 50, left: 80 }}
       padding={0.3}
       layout="vertical"
       valueScale={{ type: 'linear' }}
@@ -87,10 +87,25 @@ const BarChart = ({ data, title }) => (
       labelSkipHeight={12}
       labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
       enableLabel={false}
+      
+      // Updated tooltip to remove the word "percentage"
+      tooltip={({ value, indexValue, color }) => (
+        <div
+          style={{
+            padding: '5px 10px',
+            color: 'white',
+            background: color,
+            borderRadius: '5px',
+          }}
+        >
+          <strong>{value}%</strong> in {indexValue}
+        </div>
+      )}
+
       theme={{
         axis: {
-          ticks: { text: { fontSize: ".7em" } },
-          legend: { text: { fontSize: ".7em" } },
+          ticks: { text: { fontSize: ".8em" } },
+          legend: { text: { fontSize: ".8em" } },
         },
       }}
     />
@@ -100,13 +115,13 @@ const BarChart = ({ data, title }) => (
 const MultiChartComponent = () => {
   const [currentChart, setCurrentChart] = useState(0);
 
-// Chart data and titles for each chart
-const chartData = [
-  { data: data1, title: 'Event tech used in your team?' },
-  { data: data2, title: 'Are you using AI in event planning?' },
-  { data: data3, title: 'In what areas are you using AI?' },
-  { data: data4, title: 'How comfortable are you with AI in events?' }
-];
+  // Chart data and titles for each chart
+  const chartData = [
+    { data: data1, title: 'Event tech used in your team?' },
+    { data: data2, title: 'Are you using AI in event planning?' },
+    { data: data3, title: 'In what areas are you using AI?' },
+    { data: data4, title: 'How comfortable are you with AI in events?' }
+  ];
 
   // Colors for the slider track
   const sliderColors = {
@@ -149,9 +164,17 @@ const chartData = [
           sx={{
             color: sliderColors[currentChart],  // Dynamic color based on chart index
             width: '100%',  // Full width for the slider
-            maxWidth: '600px',  // Limit max width to make it look good
+            maxWidth: '400px',  // Reduce max width for a smaller slider
             margin: '0 auto',
             marginTop: '1em',
+            height: '4px',  // Decrease the height of the slider track
+            '& .MuiSlider-thumb': {
+              width: '12px',  // Decrease thumb size
+              height: '12px',  // Decrease thumb size
+            },
+            '& .MuiSlider-markLabel': {
+              fontSize: '0.8rem',  // Decrease the size of the mark labels
+            },
           }}
         />
       </Box>
